@@ -1,16 +1,9 @@
-randomNum = function (min, max) {
-    var value = Math.floor((Math.random() * max) + min);
-    return value;
-}
-
-var a = randomNum(97, 122); // returns int
-console.log(a);
-var b = String.fromCharCode(b);
-console.log(b);
 
 
+var randomNum = function (min, max) {
+    var a = Math.floor(Math.random() * (max - min + 1) + min);
+    return a;
+};
 
+console.log(String.fromCharCode(randomNum(97,122)));
 
-
-Math.floor((Math.random() * 10) + 1);
-Math.floor((Math.random() * 10) + 1);

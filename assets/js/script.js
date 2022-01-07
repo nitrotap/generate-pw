@@ -1,9 +1,9 @@
 // Assignment code here
 
 var randomNum = function (min, max) {
-  var value = Math.floor(Math.random() * (max - min + 1) + 1);
-  return value;
-}
+  var a = Math.floor(Math.random() * (max - min + 1) + min);
+  return a;
+};
 
 function setLength() { // returns length
   var inputLength = window.prompt("What length password? 8-128 characters");
@@ -38,7 +38,7 @@ function getLowerCase() {
   // 26 letters in the alpabet - UTF codes 97-122
   // get letter number and use String.fromCharCode() to get actual letter
   letter = String.fromCharCode(randomNum(97, 122));
-
+  return letter;
 }
 
 function setUpperCase() { // returns upperCase
@@ -54,6 +54,11 @@ function setUpperCase() { // returns upperCase
   }
   window.alert("uppercase use: " + upperCase);
   return upperCase;
+}
+
+function getUpperCase() {
+  letter = String.fromCharCode(randomNum(65, 90));
+  return letter;
 }
 
 function setNumeric() { // returns setNumeric
@@ -74,6 +79,10 @@ function setNumeric() { // returns setNumeric
   return setNumeric;
 }
 
+function getNumeric() {
+  number = String.fromCharCode(48, 57);
+}
+
 function setSpecialCharacter() { // returns setSpecial
   var inputSpecialCharacters = window.prompt(
     "Should your password include special characters? Y or N"
@@ -91,6 +100,28 @@ function setSpecialCharacter() { // returns setSpecial
   return setSpecialCharacters;
 }
 
+function getSpecialCharacter() {
+  // 4 "buckets" of special characters
+  // 1st bucket is 33-47
+  bucket = randomNum(1, 4);
+
+  switch (bucket) {
+    case 1:
+      spIndex = randomNum(33, 47);
+    case 2:
+      spIndex = randomNum(58, 64);
+    case 3:
+      spIndex = randomNum(91, 96);
+    case 4:
+      spIndex = randomNum(123-126);
+    default:
+      console.log("Unexpected value in getSpecialCharacter()");
+  }
+
+  var spChar = String.fromCharCode(spIndex);
+  return spChar;
+}
+
 // length 8-128 chars
 // charTypes lowercase, uppercase, numeric, and/or special characters
 function generatePassword(length, lowerCase, upperCase, setNumeric, setSpecialCharacters) {
@@ -105,7 +136,7 @@ function generatePassword(length, lowerCase, upperCase, setNumeric, setSpecialCh
         break;
       case 2:
         // get upper case
-      
+
         break;
       case 3:
         // get numeric value
@@ -116,7 +147,7 @@ function generatePassword(length, lowerCase, upperCase, setNumeric, setSpecialCh
 
         break;
       default:
-        // default back up
+      // default back up
 
     }
 
