@@ -1,9 +1,10 @@
+function setLowerCase() { // returns lowerCase
+    var input = window.prompt(
+        "Should your password include lowercase letters? Y or N"
+    );
+    console.log(input);
+    inputLowerCase = input.toLowerCase;
+    console.log(inputLowerCase);
+}
 
-
-var randomNum = function (min, max) {
-    var a = Math.floor(Math.random() * (max - min + 1) + min);
-    return a;
-};
-
-console.log(String.fromCharCode(randomNum(97,122)));
-
+setLowerCase();
