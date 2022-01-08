@@ -1,5 +1,4 @@
-// Assignment code here
-
+// random number generator
 var randomNum = function (min, max) {
   var a = Math.floor(Math.random() * (max - min + 1) + min);
   return a;
@@ -103,7 +102,8 @@ function getNumeric() {
   return number;
 }
 
-function setSpecialCharacter() { // returns setSpecial
+function setSpecialCharacter() {
+  // returns setSpecialCharacters
   var input = window.prompt(
     "Should your password include special characters? Y or N"
   );
@@ -118,7 +118,7 @@ function setSpecialCharacter() { // returns setSpecial
       var setSpecialCharacters = false;
       break;
     default:
-      window.alert("Input not recognized. Please enter Y or N.")
+      window.alert("Input not recognized. Please enter Y or N.");
       var setSpecialCharacters = setSpecialCharacter();
   }
   console.log("special char use: " + setSpecialCharacters);
@@ -187,7 +187,7 @@ function generatePassword(length) {
   console.log("starting generate password");
   for (var i = 0; i < length; i++) {
     // pick at random a function from chosen methods
-    methodNum = methods[Math.floor(Math.random() * (methods.length))];
+    methodNum = methods[Math.floor(Math.random() * methods.length)];
     console.log(methodNum);
 
     console.log("selected method: " + methodNum);
@@ -215,7 +215,7 @@ function generatePassword(length) {
       default:
         console.log("error in methodNum switch");
         window.alert("No appropriate options selected! Please try again.");
-        generatePassword();
+        var password = generatePassword();
     }
   }
   return password;
@@ -228,7 +228,6 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
 }
 
