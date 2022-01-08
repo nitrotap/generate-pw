@@ -29,13 +29,13 @@ function setLowerCase() { // returns lowerCase
       break;
     case "no":
     case "n":
-      var lowerCase = false;  
+      var lowerCase = false;
       break;
     default:
       window.alert("Input not recognized. Please enter Y or N.")
       setLowerCase();
   }
-  window.alert("lowercase use: " + lowerCase);
+  // window.alert("lowercase use: " + lowerCase);
   return lowerCase;
 }
 
@@ -54,10 +54,13 @@ function setUpperCase() { // returns upperCase
   var inputUpperCase = inputUpperCase.toLowerCase();
   if (inputUpperCase === "yes" || inputUpperCase === "y") {
     var upperCase = true;
-  } else {
+  } else if (inputUpperCase === "n" || inputUpperCase === "no") {
     var upperCase = false;
+  } else {
+    window.alert("Input not recognized. Please enter Y or N.")
+    setUpperCase();
   }
-  window.alert("uppercase use: " + upperCase);
+  // window.alert("uppercase use: " + upperCase);
   return upperCase;
 }
 
@@ -78,13 +81,13 @@ function setNumeric() { // returns isNumeric
       break;
     case "n":
     case "no":
-      var isNumeric = false;  
+      var isNumeric = false;
       break;
     default:
       window.alert("Input not recognized. Please enter Y or N.");
       setNumeric();
   }
-  window.alert("Integer use: " + isNumeric);
+  //window.alert("Integer use: " + isNumeric);
   return isNumeric;
 }
 
@@ -94,26 +97,21 @@ function getNumeric() {
 }
 
 function setSpecialCharacter() { // returns setSpecial
-  var inputSpecialCharacters = window.prompt(
+  var input = window.prompt(
     "Should your password include special characters? Y or N"
   );
-  var inputSpecialCharacters = inputSpecialCharacters.toLowerCase();
-  switch (inputSpecialCharacters) {
-    case "yes":
-    case "y":
-      var setSpecialCharacters = true;
-      break;
-    case "no":
-    case "n":
-      var setSpecialCharacters = false;
-      break;    
-    default:
-      window.alert("Input not recognized. Please enter Y or N.");
-      setSpecialCharacter();
-
+  var inputSpecialCharacters = input.toLowerCase();
+  if (inputSpecialCharacters === "y" || inputSpecialCharacters === "yes") {
+    specialCharacter = true;
+  } else if (inputSpecialCharacters === "n" || inputSpecialCharacters === "no") {
+    specialCharacter = false;
+  } else {
+    window.alert("Input not recognized. Please enter Y or N.");
+    setSpecialCharacter();
   }
-  window.alert("Special Character use: " + setSpecialCharacters);
-  return setSpecialCharacters;
+  console.log("special char use: " + specialCharacter);
+  // window.alert("Special Character use: " + setSpecialCharacters);
+  return specialCharacter;
 }
 
 function getSpecialCharacter() {
@@ -207,7 +205,7 @@ function generatePassword(length) {
       default:
         console.log("error in methodNum switch");
         window.alert("No appropriate options selected! Please try again.")
-        generatePassword();        
+        generatePassword();
     }
   }
   return password;
