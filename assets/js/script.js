@@ -39,7 +39,7 @@ function setLowerCase() {
       break;
     default:
       window.alert("Input not recognized. Please enter Y or N.");
-      setLowerCase();
+      var lowerCase = setLowerCase();
   }
   // window.alert("lowercase use: " + lowerCase);
   return lowerCase;
@@ -65,7 +65,7 @@ function setUpperCase() {
     var upperCase = false;
   } else {
     window.alert("Input not recognized. Please enter Y or N.");
-    setUpperCase();
+    var upperCase = setUpperCase();
   }
   // window.alert("uppercase use: " + upperCase);
   return upperCase;
@@ -92,7 +92,7 @@ function setNumeric() {
       break;
     default:
       window.alert("Input not recognized. Please enter Y or N.");
-      setNumeric();
+      var isNumeric = setNumeric();
   }
   //window.alert("Integer use: " + isNumeric);
   return isNumeric;
@@ -163,7 +163,6 @@ function generatePassword(length) {
   console.log("test log");
   var length = setLength();
   var useLowerCase = setLowerCase(); // method 1
-  debugger;
   var useUpperCase = setUpperCase(); // method 2
   var useNumeric = setNumeric(); // method 3
   var useSpChar = setSpecialCharacter(); // method 4
@@ -188,7 +187,7 @@ function generatePassword(length) {
   console.log("starting generate password");
   for (var i = 0; i < length; i++) {
     // pick at random a function from chosen methods
-    methodNum = methods[Math.floor(Math.random() * (methods.length - 1))];
+    methodNum = methods[Math.floor(Math.random() * (methods.length))];
     console.log(methodNum);
 
     console.log("selected method: " + methodNum);
@@ -210,6 +209,7 @@ function generatePassword(length) {
         break;
       case 4:
         // get special character
+        debugger;
         var newChar = getSpecialCharacter();
         password += newChar;
         break;
