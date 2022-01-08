@@ -209,7 +209,6 @@ function generatePassword(length) {
         break;
       case 4:
         // get special character
-        debugger;
         var newChar = getSpecialCharacter();
         password += newChar;
         break;
