@@ -16,7 +16,7 @@ function setLength() {
         inputLength +
         ". You need to enter a number between 8 and 128."
     );
-    setLength();
+    var length = setLength();
   }
   return length;
 }
