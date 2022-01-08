@@ -5,18 +5,24 @@ var randomNum = function (min, max) {
   return a;
 };
 
-function setLength() { // returns length
+function setLength() {
+  // returns length
   var inputLength = window.prompt("What length password? 8-128 characters");
   if (inputLength >= 8 && inputLength <= 128) {
     var length = inputLength;
   } else {
-    window.alert("Incorrect Length! You entered: " + inputLength + ". You need to enter a number between 8 and 128.");
+    window.alert(
+      "Incorrect Length! You entered: " +
+        inputLength +
+        ". You need to enter a number between 8 and 128."
+    );
     setLength();
   }
   return length;
 }
 
-function setLowerCase() { // returns lowerCase
+function setLowerCase() {
+  // returns lowerCase
   var input = window.prompt(
     "Should your password include lowercase letters? Y or N"
   );
@@ -32,7 +38,7 @@ function setLowerCase() { // returns lowerCase
       var lowerCase = false;
       break;
     default:
-      window.alert("Input not recognized. Please enter Y or N.")
+      window.alert("Input not recognized. Please enter Y or N.");
       setLowerCase();
   }
   // window.alert("lowercase use: " + lowerCase);
@@ -47,7 +53,8 @@ function getLowerCase() {
   return letter;
 }
 
-function setUpperCase() { // returns upperCase
+function setUpperCase() {
+  // returns upperCase
   var inputUpperCase = window.prompt(
     "Should your password include UPPERCASE letters? Y or N"
   );
@@ -57,22 +64,22 @@ function setUpperCase() { // returns upperCase
   } else if (inputUpperCase === "n" || inputUpperCase === "no") {
     var upperCase = false;
   } else {
-    window.alert("Input not recognized. Please enter Y or N.")
+    window.alert("Input not recognized. Please enter Y or N.");
     setUpperCase();
   }
   // window.alert("uppercase use: " + upperCase);
   return upperCase;
 }
 
-function getUpperCase() { // returns letter
+function getUpperCase() {
+  // returns letter
   var letter = String.fromCharCode(randomNum(65, 90));
   return letter;
 }
 
-function setNumeric() { // returns isNumeric
-  var input = window.prompt(
-    "Should your password include numbers 0-9? Y or N"
-  );
+function setNumeric() {
+  // returns isNumeric
+  var input = window.prompt("Should your password include numbers 0-9? Y or N");
   var inputNumeric = input.toLowerCase();
   switch (inputNumeric) {
     case "yes":
@@ -101,17 +108,22 @@ function setSpecialCharacter() { // returns setSpecial
     "Should your password include special characters? Y or N"
   );
   var inputSpecialCharacters = input.toLowerCase();
-  if (inputSpecialCharacters === "y" || inputSpecialCharacters === "yes") {
-    specialCharacter = true;
-  } else if (inputSpecialCharacters === "n" || inputSpecialCharacters === "no") {
-    specialCharacter = false;
-  } else {
-    window.alert("Input not recognized. Please enter Y or N.");
-    setSpecialCharacter();
+  switch (inputSpecialCharacters) {
+    case "yes":
+    case "y":
+      var setSpecialCharacters = true;
+      break;
+    case "no":
+    case "n":
+      var setSpecialCharacters = false;
+      break;
+    default:
+      window.alert("Input not recognized. Please enter Y or N.")
+      var setSpecialCharacters = setSpecialCharacter();
   }
-  console.log("special char use: " + specialCharacter);
+  console.log("special char use: " + setSpecialCharacters);
   // window.alert("Special Character use: " + setSpecialCharacters);
-  return specialCharacter;
+  return setSpecialCharacters;
 }
 
 function getSpecialCharacter() {
@@ -148,14 +160,15 @@ function getSpecialCharacter() {
 // length 8-128 chars
 // charTypes lowercase, uppercase, numeric, and/or special characters
 function generatePassword(length) {
+  console.log("test log");
   var length = setLength();
   var useLowerCase = setLowerCase(); // method 1
+  debugger;
   var useUpperCase = setUpperCase(); // method 2
   var useNumeric = setNumeric(); // method 3
   var useSpChar = setSpecialCharacter(); // method 4
   var password = "";
   var methods = new Array();
-
 
   if (useLowerCase === true) {
     methods.push(1);
@@ -172,12 +185,10 @@ function generatePassword(length) {
 
   console.log(methods);
 
-
   console.log("starting generate password");
   for (var i = 0; i < length; i++) {
-
     // pick at random a function from chosen methods
-    methodNum = methods[Math.floor(Math.random() * methods.length)];
+    methodNum = methods[Math.floor(Math.random() * (methods.length - 1))];
     console.log(methodNum);
 
     console.log("selected method: " + methodNum);
@@ -198,13 +209,13 @@ function generatePassword(length) {
         password += newChar;
         break;
       case 4:
-        // get special character  
+        // get special character
         var newChar = getSpecialCharacter();
         password += newChar;
         break;
       default:
         console.log("error in methodNum switch");
-        window.alert("No appropriate options selected! Please try again.")
+        window.alert("No appropriate options selected! Please try again.");
         generatePassword();
     }
   }
@@ -220,7 +231,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button

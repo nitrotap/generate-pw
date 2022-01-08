@@ -15,6 +15,7 @@ function setSpecialCharacter() { // returns setSpecial
       "Should your password include special characters? Y or N"
     );
     var inputSpecialCharacters = input.toLowerCase();
+    debugger;
     switch (inputSpecialCharacters) {
       case "yes":
       case "y":
