@@ -160,7 +160,6 @@ function getSpecialCharacter() {
 // length 8-128 chars
 // charTypes lowercase, uppercase, numeric, and/or special characters
 function generatePassword(length) {
-  console.log("test log");
   var length = setLength();
   var useLowerCase = setLowerCase(); // method 1
   var useUpperCase = setUpperCase(); // method 2
@@ -188,14 +187,12 @@ function generatePassword(length) {
   for (var i = 0; i < length; i++) {
     // pick at random a function from chosen methods
     methodNum = methods[Math.floor(Math.random() * methods.length)];
-    console.log(methodNum);
-
     console.log("selected method: " + methodNum);
     switch (methodNum) {
       case 1:
+        // get lower case
         var newChar = getLowerCase();
         password += newChar;
-        console.log(password);
         break;
       case 2:
         // get upper case
