@@ -12,8 +12,8 @@ function setLength() {
   } else {
     window.alert(
       "Incorrect Length! You entered: " +
-      inputLength +
-      ". You need to enter a number between 8 and 128."
+        inputLength +
+        ". You need to enter a number between 8 and 128."
     );
     var length = setLength();
   }
@@ -26,7 +26,6 @@ function setLowerCase() {
     "Should your password include lowercase letters? Y or N"
   );
   var inputLowerCase = input.toLowerCase();
-  console.log(inputLowerCase);
   switch (inputLowerCase) {
     case "yes":
     case "y":
@@ -40,7 +39,6 @@ function setLowerCase() {
       window.alert("Input not recognized. Please enter Y or N.");
       var lowerCase = setLowerCase();
   }
-  // window.alert("lowercase use: " + lowerCase);
   return lowerCase;
 }
 
@@ -66,7 +64,6 @@ function setUpperCase() {
     window.alert("Input not recognized. Please enter Y or N.");
     var upperCase = setUpperCase();
   }
-  // window.alert("uppercase use: " + upperCase);
   return upperCase;
 }
 
@@ -93,11 +90,11 @@ function setNumeric() {
       window.alert("Input not recognized. Please enter Y or N.");
       var isNumeric = setNumeric();
   }
-  //window.alert("Integer use: " + isNumeric);
   return isNumeric;
 }
 
 function getNumeric() {
+  // returns number
   var number = String.fromCharCode(randomNum(48, 57));
   return number;
 }
@@ -121,8 +118,6 @@ function setSpecialCharacter() {
       window.alert("Input not recognized. Please enter Y or N.");
       var setSpecialCharacters = setSpecialCharacter();
   }
-  console.log("special char use: " + setSpecialCharacters);
-  // window.alert("Special Character use: " + setSpecialCharacters);
   return setSpecialCharacters;
 }
 
@@ -130,37 +125,30 @@ function getSpecialCharacter() {
   // 4 "buckets" of special characters
   // 1st bucket is 33-47
   var bucket = randomNum(1, 4);
-  console.log("bucket: " + bucket);
   switch (bucket) {
     case 1:
       var spIndex = randomNum(33, 47);
-      console.log(spIndex);
       break;
     case 2:
       var spIndex = randomNum(58, 64);
-      console.log(spIndex);
       break;
     case 3:
       var spIndex = randomNum(91, 96);
-      console.log(spIndex);
       break;
     case 4:
       var spIndex = randomNum(123, 126);
-      console.log(spIndex);
       break;
     default:
       console.log("Unexpected value in getSpecialCharacter()");
       getSpecialCharacter();
   }
   var spChar = String.fromCharCode(spIndex);
-  console.log(spChar);
   return spChar;
 }
 
 // length 8-128 chars
 // charTypes lowercase, uppercase, numeric, and/or special characters
 function generatePassword() {
-
   var length = setLength();
   var useLowerCase = setLowerCase(); // method 1
   var useUpperCase = setUpperCase(); // method 2
@@ -191,9 +179,6 @@ function generatePassword() {
     methods.push(4);
   }
 
-  console.log(methods);
-
-  console.log("starting generate password");
   for (var i = 0; i < length; i++) {
     // pick at random a function from chosen methods
     methodNum = methods[Math.floor(Math.random() * methods.length)];
