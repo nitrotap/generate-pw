@@ -12,8 +12,8 @@ function setLength() {
   } else {
     window.alert(
       "Incorrect Length! You entered: " +
-        inputLength +
-        ". You need to enter a number between 8 and 128."
+      inputLength +
+      ". You need to enter a number between 8 and 128."
     );
     var length = setLength();
   }
@@ -159,15 +159,26 @@ function getSpecialCharacter() {
 
 // length 8-128 chars
 // charTypes lowercase, uppercase, numeric, and/or special characters
-function generatePassword(length) {
+function generatePassword() {
+
   var length = setLength();
   var useLowerCase = setLowerCase(); // method 1
   var useUpperCase = setUpperCase(); // method 2
   var useNumeric = setNumeric(); // method 3
   var useSpChar = setSpecialCharacter(); // method 4
+
+  while (!useLowerCase && !useUpperCase && !useNumeric && !useSpChar) {
+    debugger;
+    window.alert("No appropriate options selected! Please try again.");
+    var length = setLength();
+    var useLowerCase = setLowerCase(); // method 1
+    var useUpperCase = setUpperCase(); // method 2
+    var useNumeric = setNumeric(); // method 3
+    var useSpChar = setSpecialCharacter(); // method 4
+  }
+
   var password = "";
   var methods = new Array();
-
   if (useLowerCase === true) {
     methods.push(1);
   }
@@ -211,7 +222,6 @@ function generatePassword(length) {
         break;
       default:
         console.log("error in methodNum switch");
-        window.alert("No appropriate options selected! Please try again.");
         var password = generatePassword();
     }
   }
