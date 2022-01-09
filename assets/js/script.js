@@ -168,7 +168,6 @@ function generatePassword() {
   var useSpChar = setSpecialCharacter(); // method 4
 
   while (!useLowerCase && !useUpperCase && !useNumeric && !useSpChar) {
-    debugger;
     window.alert("No appropriate options selected! Please try again.");
     var length = setLength();
     var useLowerCase = setLowerCase(); // method 1
