@@ -6,7 +6,8 @@ var randomNum = function (min, max) {
 
 function setLength() {
   // returns length
-  var inputLength = window.prompt("What length password? 8-128 characters");
+  var input = window.prompt("What length password? 8-128 characters");
+  var inputLength = parseInt(input); // adding from tutor suggestion
   if (inputLength >= 8 && inputLength <= 128) {
     var length = inputLength;
   } else {
@@ -21,7 +22,7 @@ function setLength() {
 }
 
 function setLowerCase() {
-  // returns lowerCase
+  // returns lowerCase demonstrating switch statement
   var input = window.prompt(
     "Should your password include lowercase letters? Y or N"
   );
@@ -51,7 +52,7 @@ function getLowerCase() {
 }
 
 function setUpperCase() {
-  // returns upperCase
+  // returns upperCase demonstrating conditional statement
   var inputUpperCase = window.prompt(
     "Should your password include UPPERCASE letters? Y or N"
   );
@@ -182,7 +183,7 @@ function generatePassword() {
   for (var i = 0; i < length; i++) {
     // pick at random a function from chosen methods
     methodNum = methods[Math.floor(Math.random() * methods.length)];
-    console.log("selected method: " + methodNum);
+    // console.log("selected method: " + methodNum);
     switch (methodNum) {
       case 1:
         // get lower case
